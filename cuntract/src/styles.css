@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .hero {
+        background: 
+            radial-gradient(circle 50px, #064e3b, #000000),
+            radial-gradient(ellipse at bottom, #000000, transparent);
+    }
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: #000000; /* Color de texto por defecto */
+}

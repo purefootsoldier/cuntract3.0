@@ -1,6 +1,6 @@
 package com.Cuntract.Cuntract_Spring.config;
 
-
+import jakarta.servlet.Filter;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Filter;
 import java.util.logging.LogRecord;
 
 @Component
@@ -21,18 +20,16 @@ public class SimpleCorsFilter implements Filter {
     @Value("${app.client.url}")
     private String clientAppUrl = "";
 
-    public SimpleCorsFilter() {
-
-    }
-
+    public SimpleCorsFilter() {}
+    @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
-        Map<String, String> mpa = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         String originHeader = request.getHeader("Origin");
         response.setHeader("Access-Control-Allow-Origin", originHeader);
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET,PUT, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "*");
 
@@ -43,9 +40,19 @@ public class SimpleCorsFilter implements Filter {
         }
     }
 
-    //implemented
+    /*implemented
     @Override
     public boolean isLoggable(LogRecord record) {
         return false;
+    }*/
+
+    @Override
+    public void init(FilterConfig filterConfig){
+
+    }
+
+    @Override
+    public void destroy() {
+
     }
 }

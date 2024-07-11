@@ -25,7 +25,7 @@ public class WebSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         //change job route maybe
         return
-        http
+        http .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/authenticate","sign-up","/job/**").permitAll()
                         .requestMatchers("/api/**").permitAll()

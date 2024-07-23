@@ -22,25 +22,22 @@ public class AuthServiceImpl implements AuthService{
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserDto CreateUser(SignupRequest signupRequest){
+    public UserDto createUser(SignupRequest signupRequest){
         User user = new User();
 
         user.setEmail(signupRequest.getEmail());
         user.setNombre(signupRequest.getName());
         user.setPassword(new BCryptPasswordEncoder().encode(signupRequest.getPassword()));
-        user.setRole(UserRole.CLIENTE);
+        user.setRole(UserRole.TALENTO);
         User createdUser = userRepository.save(user);
 
         UserDto userDto = new UserDto();
         userDto.setId(createdUser.getId());
 
+        System.out.println("created");
+
         return userDto;
 
-    }
-
-    @Override
-    public UserDto createUser(SignupRequest signupRequest) {
-        return null;
     }
 
     public Boolean hasUserWithEmail(String email){

@@ -1,22 +1,96 @@
-<header class="flex flex-row justify-between bg-transparent w-auto h-20 items-center text-white mx-6 lg:mx-16">
-    <img class="w-auto h-full" src="assets/images/cuntract2-removebg-preview.webp" alt="">
+<div *ngIf="!isTalentIn && !isBusinessIn">
+  <header class="font-poppins flex flex-row justify-between bg-transparent w-auto h-20 items-center text-white mx-6 lg:mx-16">
+    <a routerLink="" class="w-auto h-full">
+      <img class="w-auto h-full" src="assets/images/cuntract2-removebg-preview.webp" alt="">
+    </a>
     <div>
-        <nav>
-            <ul class="flex flex-row space-x-4 lg:space-x-8 items-center">
-                <li class=" font-semibold text-lg text-white">
-                    <a routerLink="">inicio</a>
-                </li>
-                <li class=" font-semibold text-lg text-white">
-                    <a routerLink="/about">sobre nosotros</a>
-                </li>
-                <li class=" font-semibold text-lg text-white">
-                    <a routerLink="/list" routerLinkActive="active">buscar</a>
-                </li>
-                <li>
-                    <a routerLink="/login" routerLinkActive="active"><img src="assets/images/user-solid.svg" class="h-5 w-5 my-auto" alt=""></a>
-                </li>
-            </ul>
-        </nav>
+      <nav>
+        <ul class="flex flex-row space-x-4 lg:space-x-8 items-center">
+          <li class=" font-semibold text-lg text-white">
+            <a routerLink="">inicio</a>
+          </li>
+          <li class=" font-semibold text-lg text-white">
+            <a routerLink="/about">sobre nosotros</a>
+          </li>
+          <li class=" font-semibold text-lg text-white">
+            <a routerLink="/login">iniciar sesion</a>
+          </li>
+        </ul>
+      </nav>
     </div>
-</header>
-
+  </header>
+</div>
+<!-- cuando talento se halla registrado -->
+<div *ngIf="isTalentIn">
+  <header class="font-poppins flex flex-row justify-between bg-transparent w-auto h-20 items-center text-white mx-6 lg:mx-16">
+    <a routerLink="" class="w-auto h-full">
+      <img class="w-auto h-full" src="assets/images/cuntract2-removebg-preview.webp" alt="">
+    </a>
+    <div class="lg:hidden">
+      <button (click)="toggleMenu()" class="text-white focus:outline-none">
+        <!-- ícono de menú hamburguesa -->
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+    <div [class.hidden]="!menuOpen" class="absolute top-20 left-0 right-0 bg-black md:bg-transparent lg:static lg:flex flex-col lg:flex-row lg:items-center lg:space-x-8 p-4 lg:p-0">
+      <nav>
+        <ul class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 items-center">
+          <li class="font-semibold text-lg text-white">
+            <a routerLink="">dashboard</a>
+          </li>
+          <li class="font-semibold text-lg text-white">
+            <a routerLink="/list" routerLinkActive="active">buscar</a>
+          </li>
+          <li class="font-semibold text-lg text-white">
+            <a routerLink="/list" routerLinkActive="active">publicar</a>
+          </li>
+          <li class="font-semibold text-lg text-white cursor-pointer">
+            <a (click)="logout()">salir</a>
+          </li>
+          <li>
+            <a routerLink="/login" routerLinkActive="active"><img src="assets/images/user-solid.svg" class="h-5 w-5 my-auto" alt=""></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+<!-- cuendo el negocio se halla registrado  -->
+<div *ngIf="isBusinessIn">
+  <header class="font-poppins flex flex-row justify-between bg-transparent w-auto h-20 items-center text-white mx-6 lg:mx-16">
+    <a routerLink="" class="w-auto h-full">
+      <img class="w-auto h-full" src="assets/images/cuntract2-removebg-preview.webp" alt="">
+    </a>
+    <div class="lg:hidden">
+      <button (click)="toggleMenu()" class="text-white focus:outline-none">
+        <!-- ícono de menú hamburguesa -->
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+    <div [class.hidden]="!menuOpen" class="absolute top-20 left-0 right-0 bg-black md:bg-transparent lg:static lg:flex flex-col lg:flex-row lg:items-center lg:space-x-8 p-4 lg:p-0">
+      <nav>
+        <ul class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 items-center backdrop-blur-xl">
+          <li class="font-semibold text-lg text-white">
+            <a routerLink="">dashboard</a>
+          </li>
+          <li class="font-semibold text-lg text-white">
+            <a routerLink="/list" routerLinkActive="active">buscar</a>
+          </li>
+          <li class="font-semibold text-lg text-white">
+            <a routerLink="/business/crear" routerLinkActive="active">publicar</a>
+          </li>
+          <li class="font-semibold text-lg text-white cursor-pointer">
+            <a (click)="logout()">salir</a>
+          </li>
+          <li>
+            <a routerLinkActive="active"><img src="assets/images/user-solid.svg" class="h-5 w-5 my-auto" alt=""></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>

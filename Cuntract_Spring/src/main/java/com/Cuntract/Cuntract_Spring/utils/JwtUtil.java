@@ -18,12 +18,9 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    public static final String SECRET = "SecretKeyToGenJWTs";
+    public static final String SECRET = "Bbz8l9aJVgVPoIyRdse9IyujQADLYlIJSwAFTwKMavBrcTnyL5lIJQFR1BLZ2p0kdJNUfqHKVIO3nwGP+VuDjSdbizQaxUB0ayhBBhXu6AqadiWgwL5tWDXAuySl4hkhUOWaPcFlmzodUUu3CqX1yKyHXM31N1JXmvhKQINRYXf6FLVP8RI18ScrRjDtZz2/c+wDjvVxQ8lTaBrWdl5YUTJt18KiblCV+gJ1270ZASUbKan84iH/8x7Ue/9+cT9wRPBkZkYRI6Jn0I43RptrJ71Eeien4Nrni6y+fde6gVWx7Bb7dxRH1zsEe8XfIuBFrPo6aMYj7c5WicA7rd1hwgWZNsQ2mZHcdEQXRNTaLAg=\n";
 
-    public String generateToken(String username) {
-        Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, username);
-    }
+
 
     private String createToken(Map<String, Object> claims, String userName) {
         return Jwts.builder()
@@ -37,14 +34,17 @@ public class JwtUtil {
         byte[] keybytes = Decoders.BASE64.decode(SECRET);
         return Keys.hmacShaKeyFor(keybytes);
     }
-
-    public String extractUsername(String token) {
-        return  extractClaim(token, Claims::getSubject);
+    public String generateToken(String username) {
+        Map<String, Object> claims = new HashMap<>();
+        return createToken(claims, username);
     }
-
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return  claimsResolver.apply(claims);
+    }
+
+    public String extractUsername(String token) {
+        return  extractClaim(token, Claims::getSubject);
     }
 
     private Claims extractAllClaims(String token) {

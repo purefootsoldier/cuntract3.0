@@ -3,10 +3,10 @@ import com.Cuntract.Cuntract_Spring.enums.UserRole;
 import java.time.LocalDate;
 import jakarta.persistence.*;
 import lombok.Data;
-@Entity
 @Data
 @Table(name = "users")
 
+@Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

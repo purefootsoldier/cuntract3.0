@@ -16,10 +16,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationManagerResolver;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,12 +48,16 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/authenticate")
-
     public void createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest,
                                           HttpServletResponse response) throws IOException, JSONException {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
-                    authenticationRequest.getPassword()));
+            System.out.println("Attempting authentication for: " + authenticationRequest.getUsername());
+            System.out.println("Attempting authentication for: " + authenticationRequest.getUsername());
+            System.out.println("Attempting authentication for: " + authenticationRequest.getPassword());
+            System.out.println("Attempting authentication for: " + new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
+            authenticationManager.authenticate(  new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
+
+            //authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
         } catch (BadCredentialsException e) {
             throw new BadCredentialsException("incorrect username or password");
         }
@@ -69,6 +71,10 @@ public class AuthController {
                     .put("role", optionalUser.get().getRole())
                     .toString()
             );
+
+            response.addHeader("Access-Control-Expose-Headers", "Authorization");
+            response.addHeader("Access-Control-Allow-Headers", "Authorization, X-PINGOTHER. Origin, " +
+                    "X-Requested-With, Content-Type, Accept, X-Custom-header");
 
             response.addHeader(HEADER_STRING, TOKEN_PREFIX + jwt);
         }

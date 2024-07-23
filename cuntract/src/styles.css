@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
     .hero {
-        background: 
+        background:
             radial-gradient(circle 50px, #064e3b, #000000),
             radial-gradient(ellipse at bottom, #000000, transparent);
     }

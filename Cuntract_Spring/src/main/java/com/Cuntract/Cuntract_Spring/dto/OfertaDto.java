@@ -5,6 +5,7 @@ import jakarta.persistence.Lob;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -17,12 +18,9 @@ public class OfertaDto {
 
     private Double pago;
 
-    private Double horario;
-
-
     private MultipartFile imagen;
 
-    private LocalDateTime fechaCreacion;
+    private LocalDate fechaCreacion;
 
     private byte[] imagenRegresada;
     private Long userId;

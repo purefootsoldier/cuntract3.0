@@ -20,17 +20,14 @@ export class CrearOfertaComponent {
 
   constructor(private fb: FormBuilder,
     private router: Router,
-    private negocioService: NegocioService){
+    private negocioService: NegocioService){}
 
-
-
-  }
   ngOnInit(){
     this.validateForm = new FormGroup({
       titulo:new FormControl('', [Validators.required]),
       descripcion:new FormControl('', [Validators.required]),
       pago:new FormControl('', [Validators.required]),
-      paga:new FormControl('', [Validators.required]),
+      imagen:new FormControl('', [Validators.required])
     })
   }
 
@@ -50,16 +47,16 @@ export class CrearOfertaComponent {
   postOferta() {
     const formData: FormData = new FormData();
 
-    formData.append('imagen', this.selectedFile)
+    formData.append('imagen', this.selectedFile);
     formData.append('titulo', this.validateForm.get('titulo').value);
     formData.append('descripcion', this.validateForm.get('descripcion').value);
     formData.append('pago', this.validateForm.get('pago').value);
     this.negocioService.postOferta(formData).subscribe(res => {
       console.log('esotilin')
-      this.router.navigateByUrl('Business/oferta');
+      this.router.navigateByUrl('list');
 
     }, error => {
-      console.log('wazaaaaa')
+      console.log('wazaaaaa mal uso del upload')
     })
   }
 

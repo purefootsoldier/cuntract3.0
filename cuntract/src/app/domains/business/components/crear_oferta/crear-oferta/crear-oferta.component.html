@@ -22,25 +22,28 @@
         </div>
         <div class="p-4">
           <div class="mb-6">
-            <textarea rows="6" placeholder="descripcion"
+            <label for="descripcion">DESCRIPCION</label>
+            <textarea formControlName="descripcion" rows="6" placeholder="descripcion"
               class="bg-transparent w-full rounded py-3 px-[14px] text-white text-base border border-[f0f0f0] resize-none outline-none focus-visible:shadow-none focus:border-primary "></textarea>
           </div>
         </div>
+        <!-- PARA LA SUBIDA DE ARCHIVOS(BETA)-->
         <div class="p-4">
-          <input type="file" name="file" id="file" class="sr-only" />
-          <label for="file" class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
-            <div>
-              <span class="mb-2 block text-xl text-white">
-                Arrastra archivos
-              </span>
-              <span class="mb-2 block text-base text-white">
-                O
-              </span>
-              <span class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base text-white">
-                Buscar desde el ordenador
-              </span>
+          <label for="imagen" class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
+            <div *ngIf="!selectedFile" class="flex items-center justify-center w-full h-full">
+              <input formControlName="imagen" id="imagen" class="absolute inset-0 opacity-0 cursor-pointer" type="file" accept="image/x-png,image/gif,image/jpeg" (change)="onFileSelected($event)"/>
+              <button type="button" class="px-4 py-2 text-white bg-transparent border border-white rounded-md">Seleccionar archivo</button>
+            </div>
+            <div *ngIf="selectedFile">
+              <img [src]="imagePreview" alt="ayoo">
             </div>
           </label>
+        </div>
+        <div>
+          <button type="submit" [disabled]="validateForm.invalid" (click)="postOferta()"
+            class="bg-green-600 w-full p-2 rounded-sm text-white disabled:opacity-70 disabled:cursor-not-allowed">
+            Crear Oferta
+          </button>
         </div>
       </form>
     </div>

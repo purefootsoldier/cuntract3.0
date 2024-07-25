@@ -6,6 +6,7 @@ import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,9 +23,7 @@ public class Oferta {
 
     private Double pago;
 
-    private Double horario;
-
-    private LocalDateTime fechaCreacion;
+    private LocalDate fechaCreacion;
 
 
     @Lob
@@ -43,8 +42,7 @@ public class Oferta {
         ofertaDto.setTitulo(titulo);
         ofertaDto.setDescripcion(descripcion);
         ofertaDto.setPago(pago);
-        ofertaDto.setHorario(horario);
-        ofertaDto.setFechaCreacion(fechaCreacion);
+        ofertaDto.setFechaCreacion(LocalDate.now());
         ofertaDto.setImagenRegresada(imagen);
         ofertaDto.setNegocio(user.getNombre());
 

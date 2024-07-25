@@ -10,7 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class NegocioServiceImpl implements NegocioService {
@@ -29,7 +32,6 @@ public class NegocioServiceImpl implements NegocioService {
             oferta.setDescripcion(ofertaDto.getDescripcion());
             oferta.setImagen(ofertaDto.getImagen().getBytes());
             oferta.setPago(ofertaDto.getPago());
-            oferta.setHorario(ofertaDto.getHorario());
             oferta.setFechaCreacion(ofertaDto.getFechaCreacion());
             oferta.setUser(optionalUser.get());
 
@@ -37,6 +39,8 @@ public class NegocioServiceImpl implements NegocioService {
             return true;
         }
         return false;
-
+    }
+    public List<OfertaDto> getAllOfertas(Long userId) {
+        return ofertaRepository.findAllByUserId(userId).stream().map(Oferta::getOfertaDto).collect(Collectors.toList());
     }
 }

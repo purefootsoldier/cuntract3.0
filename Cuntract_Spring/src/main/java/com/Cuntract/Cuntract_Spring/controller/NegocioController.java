@@ -1,7 +1,6 @@
 package com.Cuntract.Cuntract_Spring.controller;
 
 import com.Cuntract.Cuntract_Spring.dto.OfertaDto;
-import com.Cuntract.Cuntract_Spring.entity.Oferta;
 import com.Cuntract.Cuntract_Spring.services.Negocio.NegocioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,5 +24,10 @@ public class NegocioController {
         }else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/ofertas/{userId}")
+    public ResponseEntity<?> getAllOfertasByUserId(@PathVariable Long userId) throws IOException {
+        return ResponseEntity.ok(negocioService.getAllOfertas(userId));
     }
 }

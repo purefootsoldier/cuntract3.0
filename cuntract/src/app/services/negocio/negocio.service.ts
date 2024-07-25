@@ -14,7 +14,17 @@ export class NegocioService {
   }
   postOferta(ofertaDto: any): Observable<any> {
     const userId = UserStorageService.getUserId();
-    return this.http.post(BASIC_URL + 'api/Negocio/oferta/$[userId]', ofertaDto, {
+    console.log("wazaaa")
+    return this.http.post(BASIC_URL + `api/negocio/oferta/${userId}`, ofertaDto, {
+
+      headers : this.createAuthorizationHeader()
+    })
+  }
+  getAllOfertasByUserId(): Observable<any> {
+    const userId = UserStorageService.getUserId();
+    console.log("wazaaa")
+    return this.http.get(BASIC_URL + `api/negocio/ofertas/${userId}`, {
+
       headers : this.createAuthorizationHeader()
     })
   }

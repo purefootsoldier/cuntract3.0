@@ -7,9 +7,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './job.component.css'
 })
 export class JobComponent {
-  @Input( {required: true}) placeholder: string = '';
+  @Input( {required: true}) placeholder: any;
   @Input({required: true}) title: string = '';
   @Input({required: true}) description: string = '';
-  @Input({required: true}) payment: number = 1000;
-  
+  @Input({required: true}) payment: any;
+
 }

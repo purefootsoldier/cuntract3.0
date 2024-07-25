@@ -18,14 +18,8 @@
 
       <hr class="my-6 border-gray-200 dark:border-gray-700 lg:my-8" />
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <app-job description="Desarrollador con experiencia en PHP y Laravel" title="Desarrollador Web" [payment]="12000" placeholder="assets/images/gitlab-logo-650.jpg"></app-job>
-          <app-job description="Diseñador con habilidades en Photoshop e Illustrator" title="Diseñador Gráfico" [payment]="25000" placeholder="assets/images/gitlab-logo-650.jpg"></app-job>
-          <app-job description="Administrador con experiencia en MySQL y PostgreSQL" title="Administrador de Bases de Datos" [payment]="15000" placeholder="assets/images/gitlab-logo-650.jpg"></app-job>
-          <app-job description="Ingeniero con conocimientos en configuración de redes" title="Ingeniero de Redes" [payment]="18000" placeholder="assets/images/gitlab-logo-650.jpg"></app-job>
-          <app-job description="Analista con experiencia en análisis de grandes volúmenes de datos" title="Analista de Datos" [payment]="18000" placeholder="assets/images/gitlab-logo-650.jpg"></app-job>
-          <app-job description="Desarrollo de interfaces web" title="Desarrollador Frontend" [payment]="20000" placeholder="assets/images/gitlab-logo-650.jpg"></app-job>
-          <app-job description="Análisis de datos de ventas" title="Analista de Datos" [payment]="30000" placeholder="assets/images/gitlab-logo-650.jpg"></app-job>
-          <app-job description="Desarrollador con habilidades en HTML, CSS y JavaScript" title="Desarrollador Frontend" [payment]="15000" placeholder="assets/images/gitlab-logo-650.jpg"></app-job>
+          <app-job *ngFor="let oferta of ofertas"
+          [description]="oferta.descripcion" [title]="oferta.titulo" [payment]="oferta.pago" [placeholder]="updateImg(oferta.returnedImg)"></app-job>
       </div>
   </section>
   <app-footer></app-footer>

@@ -5,7 +5,9 @@ import com.Cuntract.Cuntract_Spring.dto.UserDto;
 
 public interface AuthService {
 
-    UserDto createUser(SignupRequest signupRequest);
+    UserDto createTalento(SignupRequest signupRequest);
 
     Boolean hasUserWithEmail(String email);
+
+    UserDto createNegocio(SignupRequest signupRequest);
 }

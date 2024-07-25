@@ -50,10 +50,9 @@ export class TalentSignupComponent {
       const nombre = this.signUpForm.get('userName')?.value;
       const correo = this.signUpForm.get('correo')?.value;
       const password = this.signUpForm.get('password')?.value;
-      const role = 'TALENTO';
     }
 
-    this.authService.register(this.signUpForm.value).subscribe(
+    this.authService.registerTalent(this.signUpForm.value).subscribe(
       (response) => {
         this.successMessage = 'Cuenta creada de forma exitosa';
 

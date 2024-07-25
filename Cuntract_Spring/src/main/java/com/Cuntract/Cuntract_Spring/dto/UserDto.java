@@ -1,5 +1,6 @@
 package com.Cuntract.Cuntract_Spring.dto;
 
+import com.Cuntract.Cuntract_Spring.enums.UserRole;
 import lombok.Data;
 
 @Data
@@ -10,5 +11,7 @@ public class UserDto {
 
     private String name;
 
-    private String userRole;
+    private String password;
+
+    private UserRole role;
 }

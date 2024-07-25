@@ -20,14 +20,12 @@ public class JwtUtil {
 
     public static final String SECRET = "Bbz8l9aJVgVPoIyRdse9IyujQADLYlIJSwAFTwKMavBrcTnyL5lIJQFR1BLZ2p0kdJNUfqHKVIO3nwGP+VuDjSdbizQaxUB0ayhBBhXu6AqadiWgwL5tWDXAuySl4hkhUOWaPcFlmzodUUu3CqX1yKyHXM31N1JXmvhKQINRYXf6FLVP8RI18ScrRjDtZz2/c+wDjvVxQ8lTaBrWdl5YUTJt18KiblCV+gJ1270ZASUbKan84iH/8x7Ue/9+cT9wRPBkZkYRI6Jn0I43RptrJ71Eeien4Nrni6y+fde6gVWx7Bb7dxRH1zsEe8XfIuBFrPo6aMYj7c5WicA7rd1hwgWZNsQ2mZHcdEQXRNTaLAg=\n";
 
-
-
     private String createToken(Map<String, Object> claims, String userName) {
         return Jwts.builder()
                 .claims(claims)
                 .subject(userName)
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() * 10000 * 60 * 30))
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30))
                 .signWith(getSignkey(), SignatureAlgorithm.HS256).compact();
     }
     private Key getSignkey() {
@@ -48,7 +46,12 @@ public class JwtUtil {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(getSignkey()).build().parseUnsecuredClaims(token).getPayload();
+        return Jwts
+                .parser()
+                .setSigningKey(getSignkey())
+                .build()
+                .parseClaimsJws(token)
+                .getPayload();
     }
 
     private Boolean isTokenExpired(String token) {

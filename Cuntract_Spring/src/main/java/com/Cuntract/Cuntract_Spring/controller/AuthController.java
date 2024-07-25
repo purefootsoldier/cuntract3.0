@@ -7,12 +7,10 @@ import com.Cuntract.Cuntract_Spring.repository.UserRepository;
 import com.Cuntract.Cuntract_Spring.services.auth.AuthService;
 import com.Cuntract.Cuntract_Spring.utils.JwtUtil;
 import com.Cuntract.Cuntract_Spring.entity.User;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -51,9 +49,6 @@ public class AuthController {
     public void createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest,
                                           HttpServletResponse response) throws IOException, JSONException {
         try {
-            System.out.println("Attempting authentication for: " + authenticationRequest.getUsername());
-            System.out.println("Attempting authentication for: " + authenticationRequest.getUsername());
-            System.out.println("Attempting authentication for: " + authenticationRequest.getPassword());
             System.out.println("Attempting authentication for: " + new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
             authenticationManager.authenticate(  new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
 
@@ -80,13 +75,23 @@ public class AuthController {
         }
     }
 
-    @PostMapping("/sign-up")
-    public ResponseEntity<?> signupUser(@RequestBody SignupRequest signupRequest) {
+    @PostMapping("/sign-up/talent-signup")
+    public ResponseEntity<?> signupTalento(@RequestBody SignupRequest signupRequest) {
         if(authService.hasUserWithEmail(signupRequest.getEmail())){
             return new ResponseEntity<>("User Already exists", HttpStatus.NOT_ACCEPTABLE);
         }
 
-        UserDto userDto = authService.createUser(signupRequest);
+        UserDto userDto = authService.createTalento(signupRequest);
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
+    }
+
+    @PostMapping("/sign-up/business-signup")
+    public ResponseEntity<?> signupNegocio(@RequestBody SignupRequest signupRequest) {
+        if(authService.hasUserWithEmail(signupRequest.getEmail())){
+            return new ResponseEntity<>("negocio Already exists", HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        UserDto userDto = authService.createNegocio(signupRequest);
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 }

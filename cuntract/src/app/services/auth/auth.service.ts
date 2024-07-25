@@ -10,8 +10,11 @@ const BASIC_URL = "http://localhost:8080/"
 export class AuthService {
 
   constructor(private http: HttpClient, private userStorageService: UserStorageService) { }
-  register(signupRequest: any): Observable<any> {
-    return this.http.post(BASIC_URL + "sign-up", signupRequest)
+  registerTalent(signupRequest: any): Observable<any> {
+    return this.http.post(BASIC_URL + "sign-up/talent-signup", signupRequest)
+  }
+  registerBusiness(signupRequest: any): Observable<any> {
+    return this.http.post(BASIC_URL + "sign-up/business-signup", signupRequest)
   }
   login(username: string, password: string): any {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');

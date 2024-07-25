@@ -19,24 +19,27 @@ public class AuthServiceImpl implements AuthService{
     private UserRepository userRepository;
 
     //outdated
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserDto createUser(SignupRequest signupRequest){
+    public UserDto createTalento(SignupRequest signupRequest){
         User user = new User();
 
         user.setEmail(signupRequest.getEmail());
         user.setNombre(signupRequest.getName());
         user.setPassword(new BCryptPasswordEncoder().encode(signupRequest.getPassword()));
         user.setRole(UserRole.TALENTO);
-        User createdUser = userRepository.save(user);
 
-        UserDto userDto = new UserDto();
-        userDto.setId(createdUser.getId());
+        return userRepository.save(user).getDto();
 
-        System.out.println("created");
+    }
+    public UserDto createNegocio(SignupRequest signupRequest){
+        User user = new User();
 
-        return userDto;
+        user.setEmail(signupRequest.getEmail());
+        user.setNombre(signupRequest.getName());
+        user.setPassword(new BCryptPasswordEncoder().encode(signupRequest.getPassword()));
+        user.setRole(UserRole.NEGOCIO);
+
+        return userRepository.save(user).getDto();
 
     }
 

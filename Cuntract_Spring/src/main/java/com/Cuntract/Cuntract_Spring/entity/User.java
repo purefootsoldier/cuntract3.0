@@ -1,4 +1,5 @@
 package com.Cuntract.Cuntract_Spring.entity;
+import com.Cuntract.Cuntract_Spring.dto.UserDto;
 import com.Cuntract.Cuntract_Spring.enums.UserRole;
 import java.time.LocalDate;
 import jakarta.persistence.*;
@@ -33,5 +34,16 @@ public class User {
     @Lob
     @Column(columnDefinition = "longblob")
     private byte[] img;
+
+    //just got implemented
+    public UserDto getDto() {
+        UserDto userDto = new UserDto();
+        userDto.setId(id);
+        userDto.setEmail(email);
+        userDto.setName(nombre);
+        userDto.setRole(role);
+
+        return userDto;
+    }
 
 }

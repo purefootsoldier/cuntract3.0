@@ -30,7 +30,6 @@ export class BusinessSignupComponent {
       email: new FormControl("",[Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(7)]),
       confirmPassword: new FormControl('', [Validators.required]),
-      role: new FormControl("",Validators.required)
     }, { validators: this.passwordMatchValidator });
   }
 
@@ -51,10 +50,10 @@ export class BusinessSignupComponent {
       const nombre = this.signUpForm.get('userName')?.value;
       const correo = this.signUpForm.get('correo')?.value;
       const password = this.signUpForm.get('password')?.value;
-      const role = 'Empresa';
+      const role = 'NEGOCIO';
     }
 
-    this.authService.register(this.signUpForm.value).subscribe(
+    this.authService.registerBusiness(this.signUpForm.value).subscribe(
       (response) => {
         this.successMessage = 'Cuenta creada de forma exitosa';
 

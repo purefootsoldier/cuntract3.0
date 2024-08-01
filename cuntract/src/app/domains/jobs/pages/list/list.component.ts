@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 export class ListComponent {
   ofertas: any;
 
+
   constructor(private negocioService: NegocioService) {}
 
   ngOnInit() {

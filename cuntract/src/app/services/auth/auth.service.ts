@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { UserStorageService } from '../storage/user-storage.service';
@@ -20,8 +20,8 @@ export class AuthService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = { username, password };
     console.log(body);
-    return this.http.post(BASIC_URL + 'authenticate', body, { headers, observe: 'response' }).pipe(
-      map((res) => {
+    return this.http.post(BASIC_URL + "authenticate", body, { headers, observe: 'response' }).pipe(
+      map((res: HttpResponse<any>) => {
         const token = res.headers.get('authorization').substring(7);
         const user = res.body;
         console.log(res.body);

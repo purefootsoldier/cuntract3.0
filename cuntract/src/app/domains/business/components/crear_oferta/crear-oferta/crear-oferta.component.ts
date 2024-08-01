@@ -27,7 +27,7 @@ export class CrearOfertaComponent {
       titulo:new FormControl('', [Validators.required]),
       descripcion:new FormControl('', [Validators.required]),
       pago:new FormControl('', [Validators.required]),
-      imagen:new FormControl('', [Validators.required])
+
     })
   }
 

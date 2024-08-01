@@ -1,5 +1,5 @@
-<div class=" flex flex-row rounded-lg shadow-md overflow-hidden h-36 w-auto my-4 backdrop-blur-lg hover:scale-105 duration-200">
-    <img [src]='placeholder' alt="" class="w-64 h-auto object-cover pr-4">
+<div class=" flex flex-row rounded-lg shadow-md overflow-hidden h-36 my-4 backdrop-blur-lg hover:scale-105 duration-200">
+    <img [src]="placeholder" alt="" class="w-64 h-auto object-cover pr-4">
     <div class="flex flex-col w-full text-gray-400">
         <h2 class="mb-2 text-white">{{title}}</h2>
         <p>
@@ -10,12 +10,18 @@
             paga:     {{payment}}
             </p>
         </div>
-        <div class="w-auto flex flex-row-reverse h-full">
-          <!--
-            <button class="mr-3 mt-3 mb-3 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
-                check
+        <div *ngIf="isBusinessIn" class="w-auto flex flex-row-reverse h-full">
+            <button routerLink='/business/negocio/oferta/{{id}}' class="mr-3 mt-3 mb-3 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+                actualizar
             </button>
-          -->
+            <button class="mr-3 mt-3 mb-3 text-red-700 hover:text-white border border-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-500 dark:focus:ring-red-800"
+            (click)="onDeleteClick()">Borrar</button>
         </div>
+        <div *ngIf="isTalentIn" class="w-auto flex flex-row-reverse h-full">
+          <button routerLink="/talent/talento/ofertaDetalle/{{id}}" class="mr-3 mt-3 mb-3 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+              ver detalles
+          </button>
+
+      </div>
     </div>
 </div>

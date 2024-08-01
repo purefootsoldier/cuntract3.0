@@ -40,7 +40,41 @@ public class NegocioServiceImpl implements NegocioService {
         }
         return false;
     }
+    //metodo para ver todas las ofertas de trabajo de un solo negocio
     public List<OfertaDto> getAllOfertas(Long userId) {
         return ofertaRepository.findAllByUserId(userId).stream().map(Oferta::getOfertaDto).collect(Collectors.toList());
+    }
+    public OfertaDto getOfertaById(Long ofertaId) {
+        Optional<Oferta> optionalOferta = ofertaRepository.findById(ofertaId);
+        if (optionalOferta.isPresent()){
+            return optionalOferta.get().getOfertaDto();
+        }
+        return null;
+    }
+
+    public boolean updateOferta(Long ofertaId, OfertaDto ofertaDto) throws IOException {
+        Optional<Oferta> optionalOferta = ofertaRepository.findById(ofertaId);
+        if(optionalOferta.isPresent()) {
+            Oferta oferta = optionalOferta.get();
+            oferta.setTitulo(ofertaDto.getTitulo());
+            oferta.setDescripcion(ofertaDto.getDescripcion());
+            oferta.setPago(ofertaDto.getPago());
+            if (ofertaDto.getImagen() != null) {
+                oferta.setImagen(ofertaDto.getImagen().getBytes());
+            }
+
+            ofertaRepository.save(oferta);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean deleteOferta(Long ofertaId){
+        Optional<Oferta> optionalOferta = ofertaRepository.findById(ofertaId);
+        if(optionalOferta.isPresent()) {
+            ofertaRepository.delete(optionalOferta.get());
+            return true;
+        }
+        return false;
     }
 }

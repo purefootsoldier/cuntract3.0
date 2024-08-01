@@ -37,14 +37,12 @@
     <div [class.hidden]="!menuOpen" class="absolute top-20 left-0 right-0 bg-black md:bg-transparent lg:static lg:flex flex-col lg:flex-row lg:items-center lg:space-x-8 p-4 lg:p-0">
       <nav>
         <ul class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 items-center">
+
           <li class="font-semibold text-lg text-white">
-            <a routerLink="">dashboard</a>
+            <a routerLink="/talent/dashboard" routerLinkActive="active">buscar</a>
           </li>
           <li class="font-semibold text-lg text-white">
-            <a routerLink="/list" routerLinkActive="active">buscar</a>
-          </li>
-          <li class="font-semibold text-lg text-white">
-            <a routerLink="/list" routerLinkActive="active">publicar</a>
+            <a routerLink="" routerLinkActive="active">publicar</a>
           </li>
           <li class="font-semibold text-lg text-white cursor-pointer">
             <a (click)="logout()">salir</a>
@@ -74,14 +72,12 @@
     <div [class.hidden]="!menuOpen" class="absolute top-20 left-0 right-0 bg-black md:bg-transparent lg:static lg:flex flex-col lg:flex-row lg:items-center lg:space-x-8 p-4 lg:p-0">
       <nav>
         <ul class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 items-center backdrop-blur-xl">
-          <li class="font-semibold text-lg text-white">
-            <a routerLink="">dashboard</a>
-          </li>
+
           <li class="font-semibold text-lg text-white">
             <a routerLink="/list" routerLinkActive="active">buscar</a>
           </li>
           <li class="font-semibold text-lg text-white">
-            <a routerLink="/business/crear" routerLinkActive="active">publicar</a>
+            <a routerLink="/business/admin-panel" routerLinkActive="active">administrar</a>
           </li>
           <li class="font-semibold text-lg text-white cursor-pointer">
             <a (click)="logout()">salir</a>

@@ -1,0 +1,59 @@
+<!-- component -->
+<div
+  class="bg-black font-poppins bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-emerald-800 to-black to-40% bg-fixed">
+  <app-header class=""></app-header>
+  <section class="text-gray-700 body-font overflow-hidden bg-transparent">
+    <div class="container px-5 pt-24 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <img alt="ecommerce" class="lg:w-1/2 w-80 h-80 object-cover object-center rounded border border-gray-200"
+          [src]="avatarUrl">
+        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+          <h2 class="text-sm title-font text-gray-300 tracking-widest">publicado el: {{oferta.fechaCreacion}}</h2>
+          <h2 class="text-base title-font text-gray-300 tracking-widest"> por: {{oferta.negocio}}</h2>
+          <h1 class="text-gray-100 text-3xl title-font font-medium mb-1">{{oferta.titulo}}</h1>
+          <div class="flex mb-4">
+            <span class="flex items-center"><!--
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <span class="text-gray-600 ml-3"></span>-->
+              <span class="title-font font-medium text-2xl text-gray-100">${{oferta.pago}}</span>
+            </span>
+
+          </div>
+          <p class="leading-relaxed text-gray-300">{{oferta.descripcion}}</p>
+
+          <div class="flex ">
+            <!--<button
+              class="mr-3 mt-3 mb-3 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Button</button>-->
+              <button routerLink="/talent/talento/review/{{ofertaId}}"
+              class="mr-3 mt-3 mb-3 text-yellow-700 hover:text-white border border-yellow-700 hover:bg-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-yellow-500 dark:text-yellow-500 dark:hover:text-white dark:hover:bg-yellow-500 dark:focus:ring-yellow-800">Dar reseña</button>
+          </div>
+        </div>
+      </div>
+      <hr class="h-px my-8 mx-auto bg-gray-200 border-0 dark:bg-gray-700">
+    </div>
+  </section>
+  <section class="my-8">
+    <div class="container px-5 mx-auto font-poppins">
+      <h2 class="text-base title-font text-gray-300 tracking-widest">Reviews</h2>
+      <div class="grid grid-rows-5 gap-4">
+
+
+      </div>
+    </div>
+  </section>
+  <app-footer></app-footer>
+</div>

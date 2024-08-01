@@ -9,5 +9,12 @@ import java.util.List;
 public interface NegocioService {
 
     boolean postOferta(Long userId, OfertaDto ofertaDto) throws IOException;
+
     List<OfertaDto> getAllOfertas(Long userId);
+
+    OfertaDto getOfertaById(Long Ofertaid);
+
+    boolean updateOferta(Long ofertaId, OfertaDto ofertaDto) throws IOException;
+
+    boolean deleteOferta(Long Ofertaid);
 }

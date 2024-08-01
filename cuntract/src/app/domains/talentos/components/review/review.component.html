@@ -1,0 +1,37 @@
+<div
+  class="bg-black font-poppins bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-emerald-800 to-black to-40% bg-fixed">
+  <app-header class=""></app-header>
+  <div class=" font-poppins bg-transparent">
+    <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
+      <div class="flex items-center max-w-5xl w-full border-gray-400 border-opacity-20 border-2 rounded-lg ">
+        <form class="max-w-4xl md:m-auto w-full group" [formGroup]="validateForm" novalidate>
+          <h3 class="text-white text-3xl font-extrabold my-16 text-center">
+            Publicar Review
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+            <div>
+              <label for="rating" class="text-white">Escoja una calificacion (5 max)</label>
+              <input formControlName="rating" name="rating" type="number" required
+                class="bg-transparent backdrop-blur-md border border-gray-700 w-full text-sm text-gray-200 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
+                placeholder="ej:15000" />
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="mb-6">
+              <label for="review">contenido</label>
+              <textarea formControlName="review" rows="6" placeholder="review"
+                class="bg-transparent w-full rounded py-3 px-[14px] text-white text-base border border-[f0f0f0] resize-none outline-none focus-visible:shadow-none focus:border-primary "></textarea>
+            </div>
+          </div>
+          <div class="mb-8">
+            <button type="submit" [disabled]="validateForm.invalid" (click)="giveReview()"
+              class="bg-green-600 w-full p-2 rounded-sm text-white disabled:opacity-70 disabled:cursor-not-allowed">
+              publicar Reseña
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+<div></div>

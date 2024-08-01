@@ -12,4 +12,5 @@ public interface OfertaRepository extends JpaRepository<Oferta, Long> {
 
     List<Oferta> findAllByUserId(Long userId);
 
+    List<Oferta> findAllByTituloContaining(String name);
 }

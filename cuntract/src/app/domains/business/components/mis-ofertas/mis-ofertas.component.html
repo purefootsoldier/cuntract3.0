@@ -1,0 +1,8 @@
+
+  <div class="grid grid-cols-1 w-auto " *ngIf="ofertas != null">
+    <app-job *ngFor="let oferta of ofertas" [description]="oferta.descripcion" [title]="oferta.titulo"
+      [payment]="oferta.pago" [placeholder]="updateImg(oferta.imagenRegresada)" [id]="oferta.id" (deleteRequest)="deleteOferta($event)"> </app-job>
+  </div>
+  <div class=" text-white text-xl" *ngIf="ofertas.length === 0">
+    no has publicado alguna oferta aun
+  </div>

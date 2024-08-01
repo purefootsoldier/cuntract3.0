@@ -3,7 +3,7 @@
   <app-header class=""></app-header>
   <section class="mx-4 sm:mx-8 lg:mx-20 my-8">
     <div>
-      <form class="w-auto mx-auto">
+      <form class="w-auto mx-auto" [formGroup]="validateForm">
         <label for="default-search" class="mb-2 text-sm font-medium text-gray-300 sr-only">Search</label>
         <div class="relative">
           <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -13,10 +13,10 @@
                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
             </svg>
           </div>
-          <input type="search" id="default-search"
+          <input formControlName="oferta" type="search" id="default-search"
             class="block w-full p-4 ps-10 text-sm text-gray-300 border border-gray-700 rounded-lg bg-transparent"
-            placeholder="intenta buscar: informales, con licenciatura, horario..." required />
-          <button type="submit"
+            placeholder="intenta buscar algun titulo: programador, arquitecto, albañil..." required />
+          <button (click)="searchOfertaByTitulo()" [disabled]="validateForm.invalid"
             class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs lg:text-sm px-2 lg:px-4 py-1 lg:py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
         </div>
       </form>
@@ -27,7 +27,6 @@
       <app-job class="" *ngFor="let oferta of ofertas" [description]="oferta.descripcion" [title]="oferta.titulo"
         [payment]="oferta.pago" [placeholder]="updateImg(oferta.imagenRegresada)" [id]="oferta.id"></app-job>
     </div>
-    <!--[id]="'/negocio/oferta/{{oferta.id}}'"-->
   </section>
   <app-footer></app-footer>
 </div>
